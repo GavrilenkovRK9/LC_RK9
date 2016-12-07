@@ -28,26 +28,17 @@ namespace LC_RK9.BL
     {
         public ParameterSpace()
         {
-            Name = new List<string>();
-            Hi = new List<double>();
-            Lo = new List<double>();
-            isDesignParameter = new List<bool>();
+            Restart();
         }
 
         public void Restart()
         {
-            Name = new List<string>();
-            Hi = new List<double>();
-            Lo = new List<double>();
-            isDesignParameter = new List<bool>();
+            Variables = new List<Variable>();
         }
 
         public string macroFilePath { get; set; }
-        public List<string> Name { get; set; }
-        public List<double> Hi { get; set; }
-        public List<double> Lo { get; set; }
-        public List<double> InitValue { get; set; }
-        public List<bool> isDesignParameter { get; set; }
+        public List<Variable> Variables { get; set; }
+        
     }
 
     

@@ -31,14 +31,14 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.butFindN = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.chckbxUserDefinedN = new System.Windows.Forms.CheckBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.butFindN = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.Constraint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fldDecisionVariableStatus = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -75,14 +75,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Определение числа точек ЛПтау последовательности";
             // 
-            // butFindN
+            // chckbxUserDefinedN
             // 
-            this.butFindN.Location = new System.Drawing.Point(291, 121);
-            this.butFindN.Name = "butFindN";
-            this.butFindN.Size = new System.Drawing.Size(160, 34);
-            this.butFindN.TabIndex = 2;
-            this.butFindN.Text = "Определить N";
-            this.butFindN.UseVisualStyleBackColor = true;
+            this.chckbxUserDefinedN.AutoSize = true;
+            this.chckbxUserDefinedN.Location = new System.Drawing.Point(19, 36);
+            this.chckbxUserDefinedN.Name = "chckbxUserDefinedN";
+            this.chckbxUserDefinedN.Size = new System.Drawing.Size(397, 24);
+            this.chckbxUserDefinedN.TabIndex = 5;
+            this.chckbxUserDefinedN.Text = "Использовать автоматически определенное N?";
+            this.chckbxUserDefinedN.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(103, 205);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(248, 26);
+            this.textBox2.TabIndex = 4;
             // 
             // label2
             // 
@@ -93,23 +102,14 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "или введите свое значение:";
             // 
-            // textBox2
+            // butFindN
             // 
-            this.textBox2.Location = new System.Drawing.Point(103, 205);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(248, 26);
-            this.textBox2.TabIndex = 4;
-            // 
-            // chckbxUserDefinedN
-            // 
-            this.chckbxUserDefinedN.AutoSize = true;
-            this.chckbxUserDefinedN.Location = new System.Drawing.Point(19, 36);
-            this.chckbxUserDefinedN.Name = "chckbxUserDefinedN";
-            this.chckbxUserDefinedN.Size = new System.Drawing.Size(397, 24);
-            this.chckbxUserDefinedN.TabIndex = 5;
-            this.chckbxUserDefinedN.Text = "Использовать автоматически определенное N?";
-            this.chckbxUserDefinedN.UseVisualStyleBackColor = true;
+            this.butFindN.Location = new System.Drawing.Point(291, 121);
+            this.butFindN.Name = "butFindN";
+            this.butFindN.Size = new System.Drawing.Size(160, 34);
+            this.butFindN.TabIndex = 2;
+            this.butFindN.Text = "Определить N";
+            this.butFindN.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -121,14 +121,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(293, 211);
             this.dataGridView1.TabIndex = 3;
             // 
-            // textBox3
+            // Constraint
             // 
-            this.textBox3.Location = new System.Drawing.Point(13, 33);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox3.Size = new System.Drawing.Size(312, 61);
-            this.textBox3.TabIndex = 4;
+            this.Constraint.HeaderText = "Фунциональное ограничение";
+            this.Constraint.Name = "Constraint";
+            this.Constraint.Width = 250;
+            // 
+            // fldDecisionVariableStatus
+            // 
+            this.fldDecisionVariableStatus.Location = new System.Drawing.Point(13, 33);
+            this.fldDecisionVariableStatus.Multiline = true;
+            this.fldDecisionVariableStatus.Name = "fldDecisionVariableStatus";
+            this.fldDecisionVariableStatus.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.fldDecisionVariableStatus.Size = new System.Drawing.Size(312, 61);
+            this.fldDecisionVariableStatus.TabIndex = 4;
             // 
             // label3
             // 
@@ -139,19 +145,13 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Используемые управляющие параметры";
             // 
-            // Constraint
-            // 
-            this.Constraint.HeaderText = "Фунциональное ограничение";
-            this.Constraint.Name = "Constraint";
-            this.Constraint.Width = 250;
-            // 
             // FuncConstrDOE_Def
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 323);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.fldDecisionVariableStatus);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -176,7 +176,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox fldDecisionVariableStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Constraint;
     }

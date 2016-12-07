@@ -117,19 +117,21 @@ namespace LC_RK9.subforms
                 ParameterSpace.Restart();
                 foreach (DataGridViewRow row in tblParameters.Rows)
                 {
-                    ParameterSpace.Name.Add((string)row.Cells[_name_column_index].Value);
+                    ParameterSpace.Variables.Add(new Variable());
+                    ParameterSpace.Variables.Last().Name = (string)row.Cells[_name_column_index].Value;
+                    ParameterSpace.Variables.Last().InitValue = getNumeric(row.Index, 1);
                     if (row.Cells[_is_decision_variable_column_index].Value.Equals("Да"))
                     {
-                        ParameterSpace.isDesignParameter.Add(true);
-                        ParameterSpace.Lo.Add(Convert.ToDouble(row.Cells[_lo_value_column_index].Value));
-                        ParameterSpace.Hi.Add(Convert.ToDouble(row.Cells[_hi_value_column_index].Value));
+                        ParameterSpace.Variables.Last().IsDecisionVariable = true;
+                        ParameterSpace.Variables.Last().Lo = getNumeric(row.Index, 2);
+                        ParameterSpace.Variables.Last().Hi = getNumeric(row.Index, 3);
                     }
                     else
                     {//If the paramter is not a decision parameter set hi and lo values equal to the 
                         //initial variable value
-                        ParameterSpace.isDesignParameter.Add(false);
-                        ParameterSpace.Lo.Add((double)row.Cells[_init_value_column_index].Value);
-                        ParameterSpace.Hi.Add((double)row.Cells[_init_value_column_index].Value);
+                        ParameterSpace.Variables.Last().Lo = getNumeric(row.Index, 1);
+                        ParameterSpace.Variables.Last().Hi = getNumeric(row.Index, 1);
+                        
                     }
 
                     
@@ -137,6 +139,11 @@ namespace LC_RK9.subforms
                 Hide();
                 e.Cancel = true;
             }
+        }
+
+        private double getNumeric(int i, int j)
+        {
+            return Convert.ToDouble(tblParameters.Rows[i].Cells[j].Value);
         }
     }
 }

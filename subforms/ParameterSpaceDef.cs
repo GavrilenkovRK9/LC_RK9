@@ -40,8 +40,8 @@ namespace LC_RK9.subforms
 
         private void uploadInitialVariableData()
         {
-            var names = APDL_seeker.GetVariables(ParameterSpace.macroFilePath);
-            var values = APDL_seeker.GetValuesOfVariables(ParameterSpace.macroFilePath, names);
+            var names = APDL_editor.GetVariables(ParameterSpace.macroFilePath);
+            var values = APDL_editor.GetValuesOfVariables(ParameterSpace.macroFilePath, names);
             int j = 0;
             for (int i = 0; i < names.Length; i++)
             {

@@ -7,7 +7,7 @@ using NCalc;
 
 namespace LC_RK9.BL.MacroEditing
 {
-    public static class APDL_seeker
+    public static class APDL_editor
     {
         public static string[] GetVariables(string filePath)
         {
@@ -54,6 +54,44 @@ namespace LC_RK9.BL.MacroEditing
             }
             return values;
         }
+
+        /// <summary>
+        /// create an auxiliary macro in the same directory as the input file
+        /// THe macro is modified for Design Of Experiment subroutine
+        /// the function return filepath to the modified macro
+        /// </summary> 
+        /// <param name="filePath"></param>
+        public static string PreproceeMacroForDOE(string filePath)
+        {
+            var fileName = Path.GetFileName(filePath);
+            var directory = Path.GetDirectoryName(filePath);
+
+            var outputFileName = "DOE_aux_" + fileName;
+
+            var inputText = File.ReadAllLines(filePath).ToList();
+            //уничтожение всего, что идет после solve или lssolve
+            var solveRegEx = new Regex(@"(solve|lssolve)", RegexOptions.IgnoreCase);
+
+            int indexForRemoving = inputText.FindIndex(f => solveRegEx.IsMatch(f) == true);
+            inputText = inputText.Take(indexForRemoving).ToList();
+            //добавление в список параметров фиктивного параметра - номера решения
+            inputText.Add("*set,sol_id,0");
+            //Уничтожение команд, которые имеют отношение к сетке
+            var meshRegEx = new Regex(@"(lmesh|amesh|vmesh|esurf)", RegexOptions.IgnoreCase);
+            for (int i = 0; i < inputText.Count; i++)
+                if (meshRegEx.IsMatch(inputText[i]))
+                    inputText[i] = "";
+            inputText.Add("allsel"); inputText.Add("*get, kpCountBeforeIntersect,KP,0,count");
+            inputText.Add("linp,all"); inputText.Add("*get, kpCountAfterIntersect,KP,0,count");
+            inputText.Add("*if,kpCountBeforeIntersect,eq,kpCountAfterIntersect,then"); inputText.Add("*cfopen, results,txt,,append");
+            inputText.Add("*cfwrite,,solution_ID"); inputText.Add("*cfclos"); inputText.Add("*endif");
+
+            File.WriteAllLines(outputFileName, inputText);
+            return filePath;
+
+        }
+
+        
 
         private static bool nameIsInTheList(IEnumerable<string> list, string name)
         {

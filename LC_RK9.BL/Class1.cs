@@ -113,4 +113,13 @@ namespace LC_RK9.BL
         public string Name { get; set; }
         public bool isMinimized { get; set; }
     }
+
+    public class Variable
+    {
+        public double InitValue { get; set; }
+        public double Hi { get; set; }
+        public double Lo { get; set; }
+        public string Name { get; set; }
+        public bool IsDecisionVariable { get; set; }
+    }
 }

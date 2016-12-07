@@ -35,12 +35,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.butFindN = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tblConstraints = new System.Windows.Forms.DataGridView();
             this.Constraint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fldDecisionVariableStatus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblConstraints)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -111,15 +111,16 @@
             this.butFindN.Text = "Определить N";
             this.butFindN.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // tblConstraints
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tblConstraints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblConstraints.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Constraint});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 100);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(293, 211);
-            this.dataGridView1.TabIndex = 3;
+            this.tblConstraints.Location = new System.Drawing.Point(13, 100);
+            this.tblConstraints.Name = "tblConstraints";
+            this.tblConstraints.Size = new System.Drawing.Size(293, 211);
+            this.tblConstraints.TabIndex = 3;
+            this.tblConstraints.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblConstraints_CellValidated);
             // 
             // Constraint
             // 
@@ -152,15 +153,16 @@
             this.ClientSize = new System.Drawing.Size(810, 323);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fldDecisionVariableStatus);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tblConstraints);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FuncConstrDOE_Def";
             this.Text = "Функциональные ограничения. Планирование эксперимента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FuncConstrDOE_Def_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblConstraints)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +177,7 @@
         private System.Windows.Forms.CheckBox chckbxUserDefinedN;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tblConstraints;
         private System.Windows.Forms.TextBox fldDecisionVariableStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Constraint;

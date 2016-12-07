@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LC_RK9.BL;
+using LC_RK9.BL.Utilities;
+using FuncConstr = LC_RK9.BL.Constraint;
 
 namespace LC_RK9.subforms
 {
@@ -16,9 +18,11 @@ namespace LC_RK9.subforms
         public FuncConstrDOE_Def()
         {
             InitializeComponent();
+            FunctionalConstraints = new List<FuncConstr>();
         }
 
         public ParameterSpace ParameterSpace { get; set; }
+        public List<FuncConstr> FunctionalConstraints { get; set; }
 
         private List<Variable> decisionVariables;
         private List<string> decisionVariableName;
@@ -37,6 +41,25 @@ namespace LC_RK9.subforms
         private void displayNamesOfDecisionVariables()
         {
            
+        }
+
+        private void tblConstraints_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tblConstraints.CurrentCell.Value == null)
+                return;
+            string contents = (string)tblConstraints.CurrentCell.Value;
+            FunctionalConstraints.Add(new FuncConstr(contents));
+            if(!FunctionalConstraints.Last().ConstrainDefinitionValid(decisionVariableName))
+            {
+                MessageService.ShowError("Ограничение задано с ошибкой(((");
+                tblConstraints.CurrentCell.Value = null;
+                FunctionalConstraints.RemoveAt(FunctionalConstraints.Count - 1);
+            }
+        }
+
+        private void FuncConstrDOE_Def_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

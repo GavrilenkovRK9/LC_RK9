@@ -39,6 +39,7 @@ namespace LC_RK9
             {
                 case "ndParameterSpaceDef":
                     displayAnotherForm(parameterSpaceForm);
+                    experiment.ParameterSpace = parameterSpaceForm.ParameterSpace;
                     break;
                 case "ndTensionGauge":
                     displayAnotherForm(tensionGaugeForm);
@@ -50,6 +51,7 @@ namespace LC_RK9
                     displayAnotherForm(nickelGaugeForm);
                     break;
                 case "ndFuncConstrDOE_Def":
+                    constraintsDOE_Form.updateForm(experiment.ParameterSpace);
                     displayAnotherForm(constraintsDOE_Form);
                     break;
                 case "ndCriterionsDef":

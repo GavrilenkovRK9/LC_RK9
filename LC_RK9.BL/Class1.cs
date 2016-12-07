@@ -10,6 +10,7 @@ namespace LC_RK9.BL
     public class Experiment
     {
         public Criterion[] Criterions { get; set; }
+        public ParameterSpace ParameterSpace { get; set; }
     }
 
     public class LocalSearch: Experiment
@@ -55,7 +56,7 @@ namespace LC_RK9.BL
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public bool ConstrainDefinitionValid(string[] parameters)
+        public bool ConstrainDefinitionValid(List<string> parameters)
         {
             Random rnd = new Random();
 

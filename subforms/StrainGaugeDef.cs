@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LC_RK9.BL;
 
 namespace LC_RK9.subforms
 {
@@ -16,8 +17,13 @@ namespace LC_RK9.subforms
         {
             InitializeComponent();
             Text = formTitle;
+
+            Gauge = new StrainGauge(_defaultLength, _defaultWidth, _defaultGridLength,
+                _defaultGridWidth, _defaultBaseLength, _defaultGridFrequency);
+            
         }
 
+        public StrainGauge Gauge { get; set; }
 
         #region default_sg_paramters
         private const double _defaultLength = 7;
@@ -27,5 +33,10 @@ namespace LC_RK9.subforms
         private const double _defaultBaseLength = 1;
         private const int _defaultGridFrequency = 30;
         #endregion
+
+        private void StrainGaugeDef_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

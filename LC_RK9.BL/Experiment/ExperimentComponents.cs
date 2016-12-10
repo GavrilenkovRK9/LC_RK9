@@ -7,17 +7,6 @@ using NCalc;
 
 namespace LC_RK9.BL
 {
-    public class Experiment
-    {
-        public Criterion[] Criterions { get; set; }
-        public ParameterSpace ParameterSpace { get; set; }
-    }
-
-    public class LocalSearch: Experiment
-    {
-        public double DeviationFromStartingPoint { get; set; }
-    }
-
     public class Solution
     {
         public bool Feasible { get; set; }
@@ -42,15 +31,13 @@ namespace LC_RK9.BL
         
     }
 
-    
-
-    public class Constraint
+    public class FunConstraint
     {
-        public Constraint(string ConstraintEquation)
+        public FunConstraint(string ConstraintEquation)
         {
             constraint = new Expression(ConstraintEquation);
         }
-
+        
         /// <summary>
         /// Функция проверяет, правильно ли записано условие
         /// </summary>
@@ -59,10 +46,17 @@ namespace LC_RK9.BL
         public bool ConstrainDefinitionValid(List<string> parameters)
         {
             Random rnd = new Random();
+            List<double> values = new List<double>();
+            for (int i = 0; i < parameters.Count; i++)
+                values.Add(rnd.NextDouble());
+            return ConstraintDefinitionValid(parameters, values);            
+        }
 
-            foreach (var term in parameters)
+        public bool ConstraintDefinitionValid(List<string> parameters, List<double> values)
+        {
+            for (int i = 0; i < parameters.Count; i++)
             {
-                constraint.Parameters[term] = rnd.NextDouble();
+                constraint.Parameters[parameters[i]] = values[i];
             }
             try
             {
@@ -78,7 +72,6 @@ namespace LC_RK9.BL
                 return false;
             }
         }
-
         /// <summary>
         /// проверка, выполнено ли ограничение
         /// </summary>
@@ -93,6 +86,7 @@ namespace LC_RK9.BL
         }
 
         private Expression constraint;
+
     }
 
     public class Criterion
@@ -113,5 +107,31 @@ namespace LC_RK9.BL
         public double Lo { get; set; }
         public string Name { get; set; }
         public bool IsDecisionVariable { get; set; }
+    }
+
+    public class StrainGauge
+    {
+        public StrainGauge(double length, double width, double gridLength, double gridWidth, double baseFront, int gridCount)
+        {
+            Length = length;
+            GridLength = gridLength;
+            GridWidth = gridWidth;
+            Width = width;
+            BaseFront = baseFront;
+            GridCount = gridCount;
+        }
+
+        public double Length { get; set; }
+        public double GridLength { get; set; }
+        public double Width { get; set; }
+        public double GridWidth { get; set; }
+        public double BaseFront { get; set; }
+        public double GridCount { get; set; }
+    }
+
+    public class Surface
+    {
+        public int ID { get; set; }
+        public bool Horizontal { get; set; }
     }
 }

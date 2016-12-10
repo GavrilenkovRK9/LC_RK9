@@ -45,11 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Experiment\ExperimentComponents.cs" />
+    <Compile Include="Experiment\Experiment.cs" />
+    <Compile Include="Experiment\SolutionsGeneration\DirectionNumbers.cs" />
+    <Compile Include="Experiment\SolutionsGeneration\UniformSequence.cs" />
     <Compile Include="MacroEditing\APDL_editor.cs" />
     <Compile Include="MacroEditing\DOE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StrainGaugeLocation\LocationSearch.cs" />
+    <Compile Include="StrainGaugeLocation\SelectSurfaces.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

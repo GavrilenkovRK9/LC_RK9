@@ -32,13 +32,16 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ТР растяжения");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("ТР сжатия");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Никелевый ТР");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Мост Уитстона", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Указать места наклейки");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Мост Уитстона", new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Функциональные ограничения&планирование эксперимента");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Критерии");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Просмотр результатов");
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Функциональные ограничения");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Планирование эксперимента");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Критерии");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Просмотр результатов");
             this.designProcessTree = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -56,27 +59,32 @@
             treeNode3.Text = "ТР сжатия";
             treeNode4.Name = "ndNickelGauge";
             treeNode4.Text = "Никелевый ТР";
-            treeNode5.Name = "ndWheatstoneBridgeDef";
-            treeNode5.Text = "Мост Уитстона";
-            treeNode6.Name = "ndFuncConstrDOE_Def";
-            treeNode6.Text = "Функциональные ограничения&планирование эксперимента";
-            treeNode7.Name = "ndCriterionsDef";
-            treeNode7.Text = "Критерии";
-            treeNode8.Name = "ndResultsViewer";
-            treeNode8.Text = "Просмотр результатов";
+            treeNode5.Name = "ndSelectSurfaces";
+            treeNode5.Text = "Указать места наклейки";
+            treeNode6.Name = "ndWheatstoneBridgeDef";
+            treeNode6.Text = "Мост Уитстона";
+            treeNode7.Name = "ndFuncConstr_Def";
+            treeNode7.Text = "Функциональные ограничения";
+            treeNode8.Name = "ndDOE_Def";
+            treeNode8.Text = "Планирование эксперимента";
+            treeNode9.Name = "ndCriterionsDef";
+            treeNode9.Text = "Критерии";
+            treeNode10.Name = "ndResultsViewer";
+            treeNode10.Text = "Просмотр результатов";
             this.designProcessTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode5,
             treeNode6,
             treeNode7,
-            treeNode8});
-            this.designProcessTree.Size = new System.Drawing.Size(359, 173);
+            treeNode8,
+            treeNode9,
+            treeNode10});
+            this.designProcessTree.Size = new System.Drawing.Size(359, 278);
             this.designProcessTree.TabIndex = 0;
             this.designProcessTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.designProcessTree_NodeMouseDoubleClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 191);
+            this.button1.Location = new System.Drawing.Point(12, 296);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 44);
             this.button1.TabIndex = 1;
@@ -87,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 240);
+            this.ClientSize = new System.Drawing.Size(383, 352);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.designProcessTree);
             this.Name = "MainForm";

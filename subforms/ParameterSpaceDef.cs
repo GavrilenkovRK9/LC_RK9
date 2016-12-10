@@ -67,11 +67,7 @@ namespace LC_RK9.subforms
 
         private void butFlipVariableStatus_Click(object sender, EventArgs e)
         {
-            int index = tblParameters.CurrentCell.RowIndex;
-            if (tblParameters.Rows[index].Cells[4].Value.Equals("Нет"))
-                tblParameters.Rows[index].Cells[4].Value = "Да";
-            else
-                tblParameters.Rows[index].Cells[4].Value = "Нет";
+            
 
         }
 
@@ -81,7 +77,7 @@ namespace LC_RK9.subforms
             if(tblParameters.CurrentCell.Value!=null && (e.ColumnIndex == _lo_value_column_index || e.ColumnIndex == _hi_value_column_index))
                 if (!double.TryParse((string)tblParameters.CurrentCell.Value, out parsingResult))
                 {
-                    MessageService.ShowError("Я ломал стеклоууууу...не, х%йня. Число введи!");
+                    MessageService.ShowError("Введите численное значение");
                     tblParameters.CurrentCell.Value = null;
                 }
 
@@ -144,6 +140,19 @@ namespace LC_RK9.subforms
         private double getNumeric(int i, int j)
         {
             return Convert.ToDouble(tblParameters.Rows[i].Cells[j].Value);
+        }
+
+        private void tblParameters_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = tblParameters.CurrentCell.RowIndex;
+            if (tblParameters.CurrentCell.ColumnIndex == _is_decision_variable_column_index)
+            {
+                
+                if (tblParameters.Rows[index].Cells[4].Value.Equals("Нет"))
+                    tblParameters.Rows[index].Cells[4].Value = "Да";
+                else
+                    tblParameters.Rows[index].Cells[4].Value = "Нет";
+            }
         }
     }
 }

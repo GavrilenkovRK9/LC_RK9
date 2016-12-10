@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LC_RK9.BL.Experiments;
 
 namespace LC_RK9.BL.MacroEditing
 {
@@ -11,5 +12,9 @@ namespace LC_RK9.BL.MacroEditing
     /// </summary>
     public class DOE
     {
+        public DOE(Experiment experiemnt)
+        {
+
+        }
     }
 }

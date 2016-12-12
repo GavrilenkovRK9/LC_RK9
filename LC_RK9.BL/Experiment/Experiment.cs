@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using LC_RK9.BL.UniformSequence;
 
 namespace LC_RK9.BL.Experiments
 {
@@ -20,8 +21,33 @@ namespace LC_RK9.BL.Experiments
         
         protected virtual void GenerateSolutions()
         {
+            var decisionVariables = DesignSpace.Variables.Where(f => f.IsDecisionVariable).ToArray();
+            var LP_TAU = new SobolAB(PointCount, decisionVariables.Count(), decisionVariables.Select(f => f.Lo).ToArray(),
+                decisionVariables.Select(f => f.Hi).ToArray());
+            var names = decisionVariables.Select(f => f.Name).ToArray();
+            //проверка на выполнимость всех функциональных ограничений.
+            
+            for (int i = 0; i < PointCount; i++)
+            {
+                var parSet = LP_TAU.getNextSobolAB().Select(f => Math.Round(f, 4));
+                bool fixedConstraintSatisfied = true;
+                foreach (var constraint in FixedConstraints)
+                {
+                    if (!constraint.ConstraintSatisfied(names, parSet.ToArray()))
+                    {
+                        fixedConstraintSatisfied = false;
+                        break;
+                    }
+                }
+                if (fixedConstraintSatisfied)
+                    solutions.Add(new Solution());
+            }
+        }
 
-        }      
+        protected virtual void GenerateAndRunMacros()
+        {
+        }
+
           
         protected bool isDataInput { get; set; }
 

@@ -12,9 +12,12 @@ namespace LC_RK9.BL.MacroEditing
     /// </summary>
     public class DOE
     {
-        public DOE(Experiment experiemnt)
+        public DOE(Experiment experiment)
         {
-
+            filePathFeaForDOE = APDL_editor.PreprocessMacroForDOE(experiment.FeaFilePath);
         }
+
+
+        string filePathFeaForDOE;
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Experiment\SolutionsGeneration\UniformSequence.cs" />
     <Compile Include="MacroEditing\APDL_editor.cs" />
     <Compile Include="MacroEditing\DOE.cs" />
+    <Compile Include="MacroEditing\MacroCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StrainGaugeLocation\LocationSearch.cs" />
     <Compile Include="StrainGaugeLocation\SelectSurfaces.cs" />

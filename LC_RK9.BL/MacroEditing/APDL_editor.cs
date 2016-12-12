@@ -61,7 +61,7 @@ namespace LC_RK9.BL.MacroEditing
         /// the function return filepath to the modified macro
         /// </summary> 
         /// <param name="filePath"></param>
-        public static string PreproceeMacroForDOE(string filePath)
+        public static string PreprocessMacroForDOE(string filePath)
         {
             var fileName = Path.GetFileName(filePath);
             var directory = Path.GetDirectoryName(filePath);
@@ -83,9 +83,7 @@ namespace LC_RK9.BL.MacroEditing
                     inputText[i] = "";
             inputText.Add("allsel"); inputText.Add("*get, kpCountBeforeIntersect,KP,0,count");
             inputText.Add("linp,all"); inputText.Add("*get, kpCountAfterIntersect,KP,0,count");
-            inputText.Add("*if,kpCountBeforeIntersect,eq,kpCountAfterIntersect,then"); inputText.Add("*cfopen, results,txt,,append");
-            inputText.Add("*cfwrite,,solution_ID"); inputText.Add("*cfclos"); inputText.Add("*endif");
-
+            inputText.Add("*if,kpCountBeforeIntersect,eq,kpCountAfterIntersect,then"); 
             File.WriteAllLines(outputFileName, inputText);
             return filePath;
 

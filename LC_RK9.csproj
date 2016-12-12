@@ -152,12 +152,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="LC_RK9.BL\LC_RK9.BL.csproj">
-      <Project>{1f202230-467f-4e38-adf7-be95a5d8cc76}</Project>
-      <Name>LC_RK9.BL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
